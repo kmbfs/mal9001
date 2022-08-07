@@ -5,7 +5,7 @@ import subprocess
 DEFAULT_VOICE = None # "Samantha" # Alex or Ava or Samantha or Daniel
 SILENT_SONGS = False
 
-def read_aloud(text, wait=False, no_numbers=True, voice=DEFAULT_VOICE):
+def read_aloud(text, wait=False, no_numbers=True, voice=DEFAULT_VOICE, delay=0):
     # play with -r or --progress?
 
     if no_numbers:
@@ -14,7 +14,7 @@ def read_aloud(text, wait=False, no_numbers=True, voice=DEFAULT_VOICE):
     text = re.sub(r'[\[\]=>\'\(\)]', '', text)
     text = text.replace("Cinco, Inc", "Cinco Inc")
 
-    x = f"say '{text}'"
+    x = f"sleep {delay}; say '{text}'"
     if voice:
         x = x + f" -v {voice}"
 

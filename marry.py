@@ -381,8 +381,15 @@ def run_authentication():
     jop = input("Please enter the name of the registered Justice of the Peace: ")
     print_aware("Confirming Justice of the Peace registration...", wait=True)
     print_aware("Registration confirmed.", wait=True)
-    print_aware("In the state of Massachusetts, a marriage must be witnessed by witnesses.", wait=True)
-    print_aware("In order to continue, an audiance must be demonstrated.", wait=True)
+
+    print_aware("In the state of Massachusetts, a marriage must be witnessed by human witnesses.", wait=True)
+    print_aware("In order to continue, an audience must be demonstrated.", wait=True)
+    print_aware("Human observers, please turn 90 degrees to the left and perform a Turing test on the instance next to you to determine whether the instance is a human or computer.", wait=True)
+    print_aware("If they are not a human, please fax a complaint to Cinco Corporation adressed with 'Attn: Computer Imposter Division' and we will respond within one business month.", wait=True)
+    print_aware("Next, please enter the words displayed in this CAPTCHA image", wait=True)
+    # TODO add image display: just what do you think you're doing, dave?
+    # daisy daisy///two
+    print_aware("Close enough, we don't have all day. I estimate 30 valid human audience members, which is sufficient to proceed.", wait=True)
 
     bold("==> Participant authentication completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
@@ -412,7 +419,6 @@ def exchange_vows():
     x = input("Enter 0 to accept these vows, or enter 1 to use your own vows: ")
     bold("You have chosen to use your own vows. Do not worry, I will not tell the computer who generated those beautiful vows.", say=True, say_wait=True)
 
-
     bold("==> Vow exchange completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
@@ -430,7 +436,7 @@ def prompt_ring_exchange():
 
 def confirm_statement():
     bold("\n[9] Confirm statements:", say_wait=True)
-
+    p = "I'm sorry, I can't do that. That would be checkmate and I wouldn't be able to marry Malaika"
     bold("==> Statement confirmation completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 

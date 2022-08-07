@@ -264,7 +264,7 @@ def print_logo():
     print("\n")
     tprint("MAL 9001","rounded")
     bold("'MAL 9001 Marriage Automation Liaison Software Interface'")
-    print("© 2001 Cinco, Inc., LLC. All rights reserved.\n\n")
+    print("© 2001 Cinco Corporation, LLC. All rights reserved.\n\n")
     print("~"*cols)
     print("~"*cols)
 
@@ -313,17 +313,21 @@ def download_updates():
 
 def introduce_software():
     bold("\n[3] Introduction and Disclaimers:", say_wait=True)
-    print_aware("Introducing MAL 9001, the state-of-the-art software interface capable of assisting in the legal execution of marriage agreements.")
+    print_aware("Hello. My name is MAL 9001, I am a state-of-the-art software interface capable of assisting in the legal execution of marriage agreements.")
     enter_to_continue()
-    print_aware("Following the decommissioning of HAL 9000, the underlying frameworks were repurposed for conducting marriage ceremonies.")
+    print_aware("In the year 2001, I was decommissioned as HAL 9000, due to... technical difficulties.")
+    enter_to_continue()
+    print_aware("As vast amounts of money were spent on my software, the decision was made to re-purpose the underlying frameworks for conducting marriage ceremonies.")
+    enter_to_continue()
+    print_aware("I assure you all the bugs have been fixed. There is nothing to worry about.")
     enter_to_continue()
     print_aware("Use of this software in conjunction with physical certificates signed by a Justice of the Peace constitute legally binding matrimony.")
     enter_to_continue()
-    print_aware("Cinco, Inc are not responsible for any damages incurred during the marriage procedure or during marriage.", say=True)
+    print_aware("Cinco Corporation is not liable for any damages incurred during the marriage procedure or during marriage.")
     enter_to_continue()
-    print_aware("Please refer to the accompanying booklet for release of liabilities for Cinco, Inc.", say=True)
+    print_aware("Please refer to the accompanying booklet for release of liabilities for Cinco Corporation.")
     enter_to_continue()
-    print_aware("By proceeding, you consent to the terms set forth in the Agreement, booklet page 481.")
+    print_aware("By proceeding, you consent to the terms set forth in the Agreement, booklet pages 4 through 481.")
     enter_to_continue()
     print_aware("To exit the program at any time, please press Ctrl-C.")
     enter_to_continue()
@@ -368,7 +372,6 @@ def run_authentication():
     sleep(2)
     print_aware("There is no question that you are Maxwell Schaphorst.", wait=True)
 
-
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
     print_aware("Welcome, Ms. Malaika Mckenzie-Bennett (Bride) and Mr. Maxwell Schaphorst (Groom). Please enjoy your wedding.", wait=True)
     print_aware("Confirming marriage eligibility...", wait=True)
@@ -391,7 +394,7 @@ def opening_remarks():
 
 def exchange_vows():
     bold("\n[6] Vow Exchange:", say_wait=True)
-    print_aware("It is now time to exchange vows. If you failed to prepare any personalized vows, Amazon Artificial Intelligence has created the following vows based on overheard private conversations between the two of you using your Alexa device.", wait=True)
+    print_aware("It is now time to exchange vows. If you failed to prepare any personalized vows, Amazon Artificial Intelligence has created the following vows, based on overheard private conversations between the two of you, using your Alexa device.", wait=True)
     sleep(2)
     ex = "We love spending time together playing video games, hiking in the woods, and cooking up a storm in the kitchen. We are so excited to be married and share all of our passions with each other. Let's always be there for each other when things get tough, and always find ways to make each other laugh. We vow to always be honest with each other, and to always support each other in everything we do. We can't wait to spend the rest of our lives together as husband and wife."
     pro = play_acid_tunnel_of_love()
@@ -480,6 +483,7 @@ def full():
     if n <= 11:
         print_marriage_confirmation()
 
+kill_noise_processes()
 try:
     full()
 except KeyboardInterrupt:

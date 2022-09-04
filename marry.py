@@ -12,6 +12,7 @@ from check_processes import kill_noise_processes
 from prompts import *
 from utils import *
 from audio import *
+from images import *
 
 P_WHEEL = "|/-\\"
 P_THINK = ["   ",".  ",".. ","..."]

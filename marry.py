@@ -9,6 +9,7 @@ import argparse
 import signal
 import subprocess
 from check_processes import kill_noise_processes
+from prompts import *
 from utils import *
 from audio import *
 
@@ -500,6 +501,8 @@ def full():
         prompt_kiss()
     if n <= 11:
         print_marriage_confirmation()
+
+# annoying_repeat("An unexpected error has occurred.")
 
 kill_noise_processes()
 try:

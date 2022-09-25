@@ -1,6 +1,7 @@
 import os
 import re
 import subprocess
+from utils import add_delay
 
 def format_osascript_buttons(buttons):
     buttons_s = ",".join([f'\"{s}\"' for s in buttons])
@@ -8,9 +9,6 @@ def format_osascript_buttons(buttons):
     if len(buttons) > 1:
         button_types = button_types + " cancel button 2"
     return "buttons {"+ buttons_s +"} "+ button_types
-
-def add_delay(command, secs):
-    return f"sleep {secs}; "+command
 
 def present_dialog(
     text,
@@ -51,7 +49,15 @@ def present_alert(
         pro.wait()
 
 def annoying_repeat(text):
-    for _ in range(10):
+    present_alert(
+        text,
+        sub_message="Program is unstable and may terminate at any time.",
+        buttons=["OK"],
+        wait=True,
+        wait_seconds=900,
+        delay=0,
+    )
+    for _ in range(5):
         present_alert(
             text,
             sub_message="Program is unstable and may terminate at any time.",
@@ -74,5 +80,5 @@ def annoying_repeat(text):
         buttons=["OK"],
         wait=True,
         wait_seconds=900,
-        delay=2,
+        delay=3,
     )

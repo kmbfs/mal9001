@@ -503,7 +503,8 @@ def full():
     if n <= 11:
         print_marriage_confirmation()
 
-# annoying_repeat("An unexpected error has occurred.")
+# TODO: add this somewhere.
+annoying_repeat("An unexpected error has occurred.")
 
 kill_noise_processes()
 try:

@@ -2,7 +2,7 @@ import os
 import re
 import subprocess
 
-DEFAULT_VOICE = None # "Samantha" # Alex or Ava or Samantha or Daniel
+DEFAULT_VOICE = "Alex" # "Samantha" # Alex or Ava or Samantha or Daniel
 SILENT_SONGS = False
 
 def read_aloud(text, wait=False, no_numbers=True, voice=DEFAULT_VOICE, delay=0):

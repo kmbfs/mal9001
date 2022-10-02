@@ -72,3 +72,5 @@ def annoying_repeat(text, sub_message="Program is unstable and may terminate at 
         wait=True,
         wait_seconds=900,
     )
+
+# annoying_repeat("An unexpected error has occurred.")

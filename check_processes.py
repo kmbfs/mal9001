@@ -1,18 +1,21 @@
 from time import sleep
 import psutil
+from utils import clear_screen
+
+NOISE_PROCESSES = ["afplay", "say"]
+COMMAND_PROCESSES = ["python3.7"]
 
 def kill_noise_processes():
     for process_type, process_ids in check_current_processes().items():
-        if process_type in ["afplay", "say"]:
+        if process_type in NOISE_PROCESSES:
             for id in process_ids:
                 pro = psutil.Process(id)
                 pro.kill()
 
 def check_current_processes(verbose=False):
     process_types = {
-        "afplay":[],
-        "python3.7":[],
-        "say":[],
+        p:[]
+        for p in NOISE_PROCESSES+COMMAND_PROCESSES
     }
     for process in psutil.process_iter():
         with process.oneshot():

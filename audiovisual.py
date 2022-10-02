@@ -17,56 +17,37 @@ def we_updating_da_grid(grid, heightslist):
     return grid
 
 def print_grid(grid):
+    # midline
+    for i in range(len(grid[0])):
+        grid[int(len(grid)/2)+1][i] = "-"
+
     for h in grid:
         print("".join(h))
 
 def audio_trace_init():
-
     # it will create a randomly oscillating image of sound
     # add horizontal columns which are -3 to +3 lines different from the previous one
     # assign variable for height and width
     max_height = os.get_terminal_size().lines
     max_width = os.get_terminal_size().columns
-    midpoint = max_height / 2
-    min_height = 0
     grid = [[] for _ in range(max_height)]
     heightslist = []
 
-    # initialize the 2d array with dots
-
+    # initialize the 2d array with spaces
     for h in grid:
         for x in range(max_width):
             h.append(" ")
-        print("".join(h))
-
-    for i in range(max_width):
-        grid[31][i] = "-"
-
 
     height = 0
     for x in range(max_width):
-        randumb = random.choice(RANDOM_SHIFTS)
+        heightslist.append(0)
 
-        height = height + randumb
-        if height > max_height / 2:
-            height = max_height / 2
-        if height < 0:
-            height = 0
-        # add height to array
-        heightslist.append(height)
-
-    # print(heightslist)
-    # print("midpoint", midpoint)
     grid = we_updating_da_grid(grid, heightslist)
-
-    print_grid(grid)
 
     return grid, heightslist
 
 
 def update_heights(grid, heightslist):
-
-    print('before', heightslist)
 
     for i in range(len(heightslist)):
         if i == len(heightslist) - 1:
@@ -81,13 +62,11 @@ def update_heights(grid, heightslist):
         else:
             heightslist[i] = heightslist[i + 1]
 
-    print('after', heightslist)
     return heightslist
 
-grid, heightslist = audio_trace_init()
-while True:
+
+def refresh_grid_and_view(grid, heightslist):
     clear_screen()
     print_grid(grid)
     heightslist = update_heights(grid, heightslist)
     grid = we_updating_da_grid(grid, heightslist)
-    sleep(0.01)

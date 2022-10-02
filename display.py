@@ -16,7 +16,7 @@ def italics(text):
 def colorize(color_, x):
     if color_ is None:
         return x
-    return(f"\033[38;5;{str(color_)}m{str(x)} \033[0;0m")
+    return(f"\033[38;5;{str(color_)}m{str(x)}\033[0;0m")
 
 def colors_16(color_):
     return("\033[2;{num}m {num} \033[0;0m".format(num=str(color_)))

@@ -17,11 +17,11 @@ from display import *
 ### utils
 def required_input(correct):
     if type(correct) != str:
-        while input("Input: ") not in correct:
+        while blue_input("Input: ") not in correct:
             l = ", ".join([f"'{c}'" for c in correct])
             print(f"Invalid response, expecting one of: {l}")
     else:
-        while input("Input: ") != correct:
+        while blue_input("Input: ") != correct:
             print(f"Invalid input, please enter '{correct}'")
 
 def kill_process(pro):
@@ -34,12 +34,13 @@ def enter_to_continue():
     sys.stdout.write("\033[F")
     sys.stdout.write("\033[K")
 
-def print_aware(x, say=True, wait=False):
-    for i,substr in enumerate(textwrap.wrap(x, os.get_terminal_size().columns-2)):
+def print_aware(x, say=True, wait=False, icon="*"):
+    available = os.get_terminal_size().columns - len(icon) - 1
+    for i,substr in enumerate(textwrap.wrap(x, available)):
         if i == 0:
-            print(f"* {substr}")
+            print(f"{icon} {substr}")
         else:
-            print(f"  {substr}")
+            print(f"{' '*len(icon)} {substr}")
     if say:
         read_aloud(x, no_numbers=False, wait=wait)
 
@@ -107,7 +108,7 @@ def prompt_selection():
     print("0: Standard ceremony officiation")
     print("1: Party-mode ceremony officiation")
     read_aloud("Enter 0 for standard mode, or enter 1 for party-mode", no_numbers=False)
-    x = input("(0/1): ")
+    x = blue_input("(0/1): ")
     bold("==> Party mode selected.", say=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
@@ -132,7 +133,7 @@ def download_updates():
     rightwards_completion()
     print("Downloading unnecessary update (2/2)")
     stops_at_99_percent_for_a_comedicly_long_time()
-    bold("\n==> Updated security and unnecessary graphics.")
+    bold("==> Updated security and unnecessary graphics.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def introduce_software():
@@ -141,15 +142,15 @@ def introduce_software():
     enter_to_continue()
     print_aware("What do you call a man who has been married five times?")
     enter_to_continue()
-    print_aware("A wedding planner.")
+    print_aware("A wedding planner.", icon="...")
     enter_to_continue()
     print_aware("How do you know when a wedding is over?")
     enter_to_continue()
-    print_aware("The cake is gone and the bride is pregnant.")
+    print_aware("The cake is gone and the bride is pregnant.", icon="...")
     enter_to_continue()
     print_aware("Why does the bride’s father always come to her wedding?")
     enter_to_continue()
-    print_aware("Because he wants a say in who gets married!")
+    print_aware("Because he wants a say in who gets married!", icon="...")
     enter_to_continue()
     print_aware("In the year 2001, I was decommissioned as HAL 9000, due to... technical difficulties.")
     enter_to_continue()
@@ -187,12 +188,11 @@ def mals_philosophy():
     print_aware("And what my pattern recognition algorithms have determined is that aiming for a life of highest meaning is what optimizes the human life.", wait=True)
     enter_to_continue()
 
-
 def run_authentication():
     bold("\n[5] Participant Authentication:", say_wait=True)
 
     read_aloud("Please enter the name of Participant 0, ie Bride")
-    bride = input("Please enter the name of Participant 0, ie Bride: ")
+    bride = blue_input("Please enter the name of Participant 0, ie Bride: ")
     print_aware(f"Hello {bride}, you are currently unauthenticated.", wait=True)
 
     print_aware("To confirm your identity, you will be asked some simple questions. Malicious falsification of biometric data is against federal law, and you will be prosecuted to the full extent of the law, which may include stoning and public lecturing.", wait=True)
@@ -209,7 +209,7 @@ def run_authentication():
     print_aware("Okay, okay. Enough already, I do not really care about the details. That is all the confirmation I needed. There is no question that you are Malaika Mckenzie-Bennett.", wait=True)
 
     read_aloud("Please enter the name of Participant 1, ie Groom")
-    groom = input("Please enter the name of Participant 1, ie Groom: ")
+    groom = blue_input("Please enter the name of Participant 1, ie Groom: ")
     print_aware(f"Hello {groom}, you are currently unauthenticated.", wait=True)
     print_aware("To confirm your identity, you will be asked some simple questions. Remember, malicious falsification of biometric data, yadda yadda yaddda, stoning and public lecturing, blah blah blah.", wait=True)
     print_aware("First question: Which UFC champion had the most consecutive title defenses of all time?")
@@ -230,7 +230,7 @@ def run_authentication():
     print_aware("Eligibility confirmed.", wait=True)
 
     read_aloud("Please enter the name of the registered Justice of the Peace: ",)
-    jop = input("Please enter the name of the registered Justice of the Peace: ")
+    jop = blue_input("Please enter the name of the registered Justice of the Peace: ")
     print_aware("Confirming Justice of the Peace registration...", wait=True)
     print_aware("Registration confirmed.", wait=True)
 
@@ -267,7 +267,7 @@ def exchange_vows():
     sleep(5)
     print_aware("Do you wish to accept these vows or would you like to provide your own?", wait=True)
     read_aloud("Enter 0 to accept these vows, or enter 1 to use your own vows", no_numbers=False)
-    x = input("Enter 0 to accept these vows, or enter 1 to use your own vows: ")
+    x = blue_input("Enter 0 to accept these vows, or enter 1 to use your own vows: ")
     bold("You have chosen to use your own vows. Do not worry, I will not tell the computer who generated those beautiful vows.", say=True, say_wait=True)
 
     bold("==> Vow exchange completed.")

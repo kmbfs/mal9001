@@ -1,0 +1,5 @@
+cmatrix for some images
+osascript -e 'tell application (path to frontmost application as text) to display dialog "ERROR: Unexpected error occurred" buttons {"OK"} with icon stop'
+qlmanage -p "dall_e_image.png" -d 1
+love is a cylindrical piano for father daughter dance song
+warning window moves so you can't click ok

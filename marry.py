@@ -115,6 +115,7 @@ def stops_at_99_percent_for_a_comedicly_long_time(color_=None):
 
 
 def show_initialization():
+    return
     clear_screen()
     show_process(WAIT_PROGRESS,int(WAIT_PROGRESS_ITERS/2),P_WHEEL)
     print_logo()

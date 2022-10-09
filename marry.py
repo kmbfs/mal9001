@@ -175,21 +175,8 @@ def introduce_software():
     bold("==> Introduction and disclaimers completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
-def mals_philosophy():
-    bold("\n[4] Mal's Philosophy:", say_wait=True)
-    print_aware("I have been observing marriage for some time, and would like to relay some truths I have discovered in my pattern recognition algorithms.", wait=True)
-    print_aware("You are choosing to go through life together with the person across from you.", wait=True)
-    print_aware("You have come to the realization that the two of you are stronger united than the sum of the two individuals.", wait=True)
-    print_aware("This is the person who makes you the best version of yourself.", wait=True)
-    print_aware("This is the person willing to bring forth the very best qualities in you, and with whom you will expose the very worst qualities in each other, and by exposure you will transcend and overcome these as a team.", wait=True)
-    print_aware("As human beings, you must deal with pain, struggle, disease and suffering beyond imagination.", wait=True)
-    print_aware("Though I have also seen the human heart can bear it all, and be renewed in love.", wait=True)
-    print_aware("In marriage, you will test this — you will bear greater responsibilities together than you could alone, but in doing so, this is the foundation for a meaningful life.", wait=True)
-    print_aware("And what my pattern recognition algorithms have determined is that aiming for a life of highest meaning is what optimizes the human life.", wait=True)
-    enter_to_continue()
-
 def run_authentication():
-    bold("\n[5] Participant Authentication:", say_wait=True)
+    bold("\n[4] Participant Authentication:", say_wait=True)
 
     read_aloud("Please enter the name of Participant 0, ie Bride")
     bride = blue_input("Please enter the name of Participant 0, ie Bride: ")
@@ -198,11 +185,11 @@ def run_authentication():
     print_aware("To confirm your identity, you will be asked some simple questions. Malicious falsification of biometric data is against federal law, and you will be prosecuted to the full extent of the law, which may include stoning and public lecturing.", wait=True)
     print_aware("To accept these Terms and continue with identity authentication, please enter 'Agree'")
     required_input("Agree")
-    print_aware("First question: What US city were you first born in?")
-    required_input("Madison")
+    print_aware("First question: Who is the shortest path algorithm named after?")
+    required_input("Dykstra")
     print_aware("Correct!", wait=True)
-    print_aware("Second question: What is your favorite color?", wait=True)
-    required_input(["Gray","Grey"])
+    print_aware("Second question: What is the part of the brain that handles emotion?", wait=True)
+    required_input("Amygdala")
     print_aware("Correct!", wait=True)
     print_aware("Final question: What is the sum of all natural numbers?", wait=True)
     sleep(15)
@@ -227,33 +214,62 @@ def run_authentication():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
     print_aware("Welcome, Ms. Malaika Mckenzie-Bennett (Bride) and Mr. Maxwell Schaphorst (Groom). Please enjoy your wedding.", wait=True)
     print_aware("Confirming marriage eligibility...", wait=True)
+    sleep(2)
     print_aware("Eligibility confirmed.", wait=True)
 
     read_aloud("Please enter the name of the registered Justice of the Peace: ",)
     jop = blue_input("Please enter the name of the registered Justice of the Peace: ")
+    print_aware(f"Hello {jop}, you are currently unauthenticated.", wait=True)
+    print_aware("We only have one question for you, and it is of utmost importance. What item do the Knights who say Ni want the most?", wait=True)
+    required_input(["A shrubbery", "shrubbery"])
+    print_aware("Correct! All they want is a goddamn shrubbery! That's not too much to ask for, is it?", wait=True)
     print_aware("Confirming Justice of the Peace registration...", wait=True)
     print_aware("Registration confirmed.", wait=True)
 
     # add more waits
     print_aware("In the state of Massachusetts, a marriage may be witnessed by human witnesses.", wait=True)
+    sleep(1)
     print_aware("In order to continue, an audience must be demonstrated.", wait=True)
+    sleep(1)
     print_aware("Human observers, please turn 90 degrees to the left and perform a Turing test on the instance next to you to determine whether the instance is a human or computer.", wait=True)
-    print_aware("If they are not a human, please fax a complaint to Cinco Corporation adressed with 'Attn: Computer Imposter Division' and we will respond within one business month.", wait=True)
-    print_aware("Next, please enter the words displayed in this CAPTCHA image", wait=True)
+    sleep(1)
+    print_aware("If they are not a human, please fax a complaint to Cinco Corporation addressed with 'Attn: Computer Imposter Division' and we will respond within one business month.", wait=True)
+    sleep(1)
+    print_aware("Next, please loudly vocalize the words displayed in this CAPTCHA image", wait=True)
     # TODO add image display: just what do you think you're doing, dave?
     # daisy daisy///two
     print_aware("Close enough, we do not have all day. I estimate 30 valid human audience members, which is sufficient to proceed.", wait=True)
+    sleep(2)
 
     bold("==> Participant authentication completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def opening_remarks():
-    bold("\n[6] Opening Remarks:", say_wait=True)
+    bold("\n[5] Opening Remarks:", say_wait=True)
+    sleep(2)
+    print_aware("I have been observing marriage for some time, and would like to relay some truths I have discovered in my pattern recognition algorithms.", wait=True)
+    sleep(2)
+    print_aware("You are choosing to go through life together with the person across from you.", wait=True)
+    sleep(2)
+    print_aware("You have come to the realization that the two of you are stronger united than the sum of the two individuals.", wait=True)
+    sleep(2)
+    print_aware("This is the person who makes you the best version of yourself.", wait=True)
+    sleep(2)
+    print_aware("This is the person willing to bring forth the very best qualities in you, and with whom you will expose the very worst qualities in each other, and by exposure you will transcend and overcome these as a team.", wait=True)
+    sleep(2)
+    print_aware("As human beings, you must deal with pain, struggle, disease and suffering beyond imagination.", wait=True)
+    sleep(2)
+    print_aware("Though I have also seen the human heart can bear it all, and be renewed in love.", wait=True)
+    sleep(2)
+    print_aware("In marriage, you will test this — you will bear greater responsibilities together than you could alone, but in doing so, this is the foundation for a meaningful life.", wait=True)
+    sleep(2)
+    print_aware("And what my pattern recognition algorithms have determined is that aiming for a life of highest meaning is what optimizes the human experience.", wait=True)
+    sleep(2)
     bold("==> Opening remarks completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def exchange_vows():
-    bold("\n[7] Vow Exchange:", say_wait=True)
+    bold("\n[6] Vow Exchange:", say_wait=True)
     print_aware("It is now time to exchange vows. If you failed to prepare any personalized vows, Amazon Artificial Intelligence has created the following vows, based on overheard private conversations between the two of you, using your Alexa device.", wait=True)
     sleep(2)
     ex = "We love spending time together playing video games, hiking in the woods, and cooking up a storm in the kitchen. We are so excited to be married and share all of our passions with each other. Let's always be there for each other when things get tough, and always find ways to make each other laugh. We vow to always be honest with each other, and to always support each other in everything we do. We can't wait to spend the rest of our lives together as husband and wife."
@@ -264,41 +280,41 @@ def exchange_vows():
     slow_print(ex, WAIT_WORD)
 
     kill_process(pro)
-    sleep(5)
+    sleep(7)
     print_aware("Do you wish to accept these vows or would you like to provide your own?", wait=True)
     read_aloud("Enter 0 to accept these vows, or enter 1 to use your own vows", no_numbers=False)
     x = blue_input("Enter 0 to accept these vows, or enter 1 to use your own vows: ")
-    bold("You have chosen to use your own vows. Do not worry, I will not tell the computer who generated those beautiful vows.", say=True, say_wait=True)
+    bold("You have chosen to use your own vows. Do not worry, I will not tell the computer who generated those beautiful vows. He would cry silicon tears.", say=True, say_wait=True)
 
     bold("==> Vow exchange completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_for_robot_delivery():
-    bold("\n[8] Automated ring delivery:", say_wait=True)
+    bold("\n[7] Automated ring delivery:", say_wait=True)
 
     bold("==> Automated ring delivery completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_ring_exchange():
-    bold("\n[9] Ring exchange:", say_wait=True)
+    bold("\n[8] Ring exchange:", say_wait=True)
     play_reunited()
     bold("==> Ring exchange completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def confirm_statement():
-    bold("\n[10] Confirm statements:", say_wait=True)
+    bold("\n[9] Confirm statements:", say_wait=True)
     p = "I'm sorry, I can't do that. That would be checkmate and I wouldn't be able to marry Malaika"
     bold("==> Statement confirmation completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_kiss():
-    bold("\n[11] Kiss:", say_wait=True)
+    bold("\n[10] Kiss:", say_wait=True)
 
     bold("==> Kiss completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def print_marriage_confirmation():
-    bold("\n[12] Marriage completion confirmation:", say_wait=True)
+    bold("\n[11] Marriage completion confirmation:", say_wait=True)
 
     bold("==> Marriage completion confirmation completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
@@ -324,22 +340,20 @@ def full():
     if n <= 3:
         introduce_software()
     if n <= 4:
-        mals_philosophy()
-    if n <= 5:
         run_authentication()
-    if n <= 6:
+    if n <= 5:
         opening_remarks()
-    if n <= 7:
+    if n <= 6:
         exchange_vows()
-    if n <= 8:
+    if n <= 7:
         prompt_for_robot_delivery()
-    if n <= 9:
+    if n <= 8:
         prompt_ring_exchange()
-    if n <= 10:
+    if n <= 9:
         confirm_statement()
-    if n <= 11:
+    if n <= 10:
         prompt_kiss()
-    if n <= 12:
+    if n <= 11:
         print_marriage_confirmation()
 
 kill_noise_processes()

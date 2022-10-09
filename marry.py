@@ -57,7 +57,7 @@ def enter_to_continue():
     sys.stdout.write("\033[K")
 
 def print_aware(x, say=True, wait=False):
-    for i,substr in enumerate(textwrap.wrap(x, os.get_terminal_size().columns-2)):
+    for i,substr in enumerate(textwrap.wrap(x, terminal_size_columns()-2)):
         if i == 0:
             print(f"* {substr}")
         else:

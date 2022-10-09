@@ -18,7 +18,6 @@ def terminal_size_lines():
         print("assuming 180 lines")
         return 180
 
-
 def blue_input(text):
     return input(colorize(39, text))
 

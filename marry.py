@@ -134,6 +134,7 @@ def prompt_selection():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def connect_to_internet():
+    return
     bold("\n[1] Connecting to the Internet. Please wait.")
     pro = play_dialup_sound()
     bounce()
@@ -149,6 +150,7 @@ def connect_to_internet():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def download_updates():
+    return
     bold("\n[2] Downloading (2) updates. Please wait. This may take a few minutes.", say_wait=True)
     print("Downloading security update (1/2)")
     rightwards_completion()

@@ -45,7 +45,10 @@ def required_input(correct):
 
 def kill_process(pro):
     if not pro: return
-    os.killpg(os.getpgid(pro.pid), signal.SIGTERM)
+    try:
+        os.killpg(os.getpgid(pro.pid), signal.SIGTERM)
+    except Exception as e:
+        print(f"No such process {pro.pid}")
 
 def enter_to_continue():
     print(colorize(234,"(Press Enter to continue)"), end="\r")

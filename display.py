@@ -4,6 +4,9 @@ from time import sleep
 from utils import *
 from audio import read_aloud
 
+def blue_input(text):
+    return input(colorize(39, text))
+
 def bold(text, say=True, say_wait=False):
     print('\033[1m' + text + '\033[0m')
 

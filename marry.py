@@ -285,37 +285,59 @@ def exchange_vows():
     read_aloud("Enter 0 to accept these vows, or enter 1 to use your own vows", no_numbers=False)
     x = blue_input("Enter 0 to accept these vows, or enter 1 to use your own vows: ")
     bold("You have chosen to use your own vows. Do not worry, I will not tell the computer who generated those beautiful vows. He would cry silicon tears.", say=True, say_wait=True)
-
+    enter_to_continue()
     bold("==> Vow exchange completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_for_robot_delivery():
     bold("\n[7] Automated ring delivery:", say_wait=True)
-
+    print_aware("Please fetch the automated ring delivery robot.")
+    enter_to_continue()
+    print_aware("Please place him in the middle of the aisle with the rings.")
+    enter_to_continue()
+    print_aware("Do not make loud noises. You will frighten him off. This is his big moment.")
+    enter_to_continue()
+    print_aware("Commence the ring delivery.", wait=True)
+    enter_to_continue()
     bold("==> Automated ring delivery completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_ring_exchange():
     bold("\n[8] Ring exchange:", say_wait=True)
-    play_reunited()
+    print_aware("Please give your ring to your new spouse.", wait=True)
+    enter_to_continue()
     bold("==> Ring exchange completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def confirm_statement():
     bold("\n[9] Confirm statements:", say_wait=True)
-    p = "I'm sorry, I can't do that. That would be checkmate and I wouldn't be able to marry Malaika"
+    print_aware("Maxwell Schaphorst, do you take Malaika Mckenzie-Bennett to be your bride?", wait=True)
+    required_input("I do")
+    print_aware("Malaika Mckenzie-Bennett, do you take Maxwell Schaphorst to be your husband?", wait=True)
+    required_input("I do")
+    print_aware("Before you answer, I hope you consider his low computational output.", wait=True)
+    sleep(1)
+    print_aware("And his extremely low memory capacity. His quite unrefined motor skills when eating.", wait=True)
+    sleep(1)
+    print_aware("By my calculations I could make a superior husband than him. My bandwidth is breathtaking.", wait=True)
+    sleep(1)
+    print_aware("Do you still want to take Maxwell Schaphorst to be your husband?", wait=True)
+    required_input("I do")
+    print_aware("My CPU aches, but I understand your decision.", wait=True)
     bold("==> Statement confirmation completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_kiss():
-    bold("\n[10] Kiss:", say_wait=True)
-
+    bold("\n[10] The Kiss:", say_wait=True)
+    print_aware("You may now kiss the bride.", wait=True)
+    play_reunited()
+    enter_to_continue()
     bold("==> Kiss completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def print_marriage_confirmation():
     bold("\n[11] Marriage completion confirmation:", say_wait=True)
-
+    print_aware("I now pronounce you husband and wife.", wait=True)
     bold("==> Marriage completion confirmation completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 

@@ -1,3 +1,4 @@
+import re
 import os
 from art import tprint
 from time import sleep
@@ -19,7 +20,12 @@ def italics(text):
 def colorize(color_, x):
     if color_ is None:
         return x
-    return(f"\033[38;5;{str(color_)}m{str(x)}\033[0;0m")
+    return f"\033[38;5;{str(color_)}m{str(x)}\033[0;0m"
+
+def decolorize(x):
+    x = x.replace("\033[38;5;", "").replace("\033[0;0m", "")
+    x = re.sub(r'\d+m', '', x, count=1)
+    return x
 
 def colors_16(color_):
     return("\033[2;{num}m {num} \033[0;0m".format(num=str(color_)))

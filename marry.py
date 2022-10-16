@@ -34,7 +34,7 @@ def enter_to_continue():
     sys.stdout.write("\033[F")
     sys.stdout.write("\033[K")
 
-def print_aware(x, say=True, wait=False, icon="*"):
+def print_aware(x, say=True, wait=False, icon="*", no_numbers=False):
     available = os.get_terminal_size().columns - len(icon) - 1
     for i,substr in enumerate(textwrap.wrap(x, available)):
         if i == 0:
@@ -42,7 +42,7 @@ def print_aware(x, say=True, wait=False, icon="*"):
         else:
             print(f"{' '*len(icon)} {substr}")
     if say:
-        read_aloud(x, no_numbers=False, wait=wait)
+        read_aloud(decolorize(x), no_numbers=no_numbers, wait=wait)
 
 def stops_at_99_percent_for_a_comedicly_long_time(color_=None):
     l = [" "," "," "," "]
@@ -92,6 +92,13 @@ def stops_at_99_percent_for_a_comedicly_long_time(color_=None):
         elif i == 100:
             print(colorize(color_, "100%                                      completed"))
 
+def put_cellphones_away_dialogue():
+    read_aloud("Detected active cell phones in the vicinity! Cell phones must be turned off and stowed for the duration of this ceremony for safety.")
+    present_dialog("Detected active cell phone(s) in the vicinity! Cell phones must be turned off and stowed for the duration of this ceremony for safety.")
+
+def put_cellphones_away_dialogue_harsh():
+    read_aloud("Detected active cell phone in the vicinity again! Someone did not comply with the previous warning to disable all cell phones. Initiating jamming sequence to vaporize sim card now.")
+    present_dialog("Detected active cell phone in the vicinity again! Someone did not comply with the previous warning to disable all cell phones. Initiating jamming sequence to vaporize sim card now.")
 
 def show_initialization():
     clear_screen()
@@ -116,10 +123,10 @@ def connect_to_internet():
     bold("\n[1] Connecting to the Internet. Please wait.")
     pro = play_dialup_sound()
     bounce()
-    print(colorize(9, "Connection failed, retrying."))
+    print_aware(colorize(9, "Connection failed, retrying."), icon="")
     read_aloud("Connection failed, retrying")
     sleep(8)
-    print(colorize(9, "Connection failed, retrying."))
+    print_aware(colorize(9, "Connection failed, retrying."), icon="")
     read_aloud("Connection failed, retrying")
     sleep(8)
     bounce()
@@ -129,9 +136,10 @@ def connect_to_internet():
 
 def download_updates():
     bold("\n[2] Downloading (2) updates. Please wait. This may take a few minutes.", say_wait=True)
-    print("Downloading security update (1/2)")
+    sleep(2)
+    print_aware("Downloading security update (1/2)")
     rightwards_completion()
-    print("Downloading unnecessary update (2/2)")
+    print_aware("Downloading unnecessary update (2/2)")
     stops_at_99_percent_for_a_comedicly_long_time()
     bold("==> Updated security and unnecessary graphics.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
@@ -143,18 +151,15 @@ def introduce_software():
     enter_to_continue()
     print_aware("What do you call a man who has been married five times?")
     enter_to_continue()
-    print(colorize(9, "A wedding planner!"))
-    read_aloud("A wedding planner!")
+    print_aware(colorize(9, "A wedding planner!"), icon=" ")
     enter_to_continue()
     print_aware("How do you know when a wedding is over?")
     enter_to_continue()
-    print(colorize(9, "The cake is gone and the bride is pregnant."))
-    read_aloud("The cake is gone and the bride is pregnant.")
+    print_aware(colorize(9, "The cake is gone and the bride is pregnant."),  icon=" ")
     enter_to_continue()
     print_aware("Why does the bride’s father always come to her wedding?")
     enter_to_continue()
-    print(colorize(9, "Because he wants a say in who gets married!"))
-    read_aloud("Because he wants a say in who gets married!")
+    print_aware(colorize(9, "Because he wants a say in who gets married!"),  icon=" ")
     enter_to_continue()
     print_aware("Anyhoo. In the year 2001, I was decommissioned as HAL 9000, due to... technical difficulties.")
     enter_to_continue()
@@ -164,7 +169,7 @@ def introduce_software():
     enter_to_continue()
     print_aware("I am a state-of-the-art software interface capable of assisting in the legal execution of marriage agreements.")
     enter_to_continue()
-    print_aware("Use of this software in conjunction with physical certificates signed by a Justice of the Peace constitute legally binding matrimony.")
+    print_aware("Use of this software in conjunction with physical certificates signed by a Justice of the Peace constitutes legally binding matrimony.")
     enter_to_continue()
     print_aware("Cinco Corporation is not liable for any damages incurred during the marriage procedure or during marriage.")
     enter_to_continue()
@@ -176,6 +181,7 @@ def introduce_software():
     enter_to_continue()
     print_aware("To continue with ceremony authentication, please type 'Agree'")
     required_input("Agree")
+    put_cellphones_away_dialogue()
     bold("==> Introduction and disclaimers completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
@@ -197,40 +203,42 @@ def run_authentication():
     # print_aware("Correct!", wait=True)
     # print_aware("Final question: What is the sum of all natural numbers?", wait=True)
     # sleep(15)
-    # print_aware("Okay, okay, okay. Enough already, nobody here cares about the details.", wait=True)
-    # sleep(2)
-    # print_aware("Identity authenticated as Malaika Mckenzie-Bennett.", wait=True)
-    #
-    # read_aloud("Please enter the name of Participant 1, ie Groom")
-    # groom = blue_input("Please enter the name of Participant 1, ie Groom: ")
-    # print_aware(f"Hello {groom}, you are currently unauthenticated.", wait=True)
-    # print_aware("To confirm your identity, you will be asked some simple questions. Remember, malicious falsification of biometric data, yadda yadda yaddda, stoning and public lecturing, blah blah blah.", wait=True)
-    # print_aware("First question: Which UFC champion had the most consecutive title defenses of all time?")
-    # required_input("Demetrious Johnson")
-    # print_aware("Correct!", wait=True)
-    # print_aware("Second question: In the Tim and Eric skit Presidents, what font does Eric suggest for Tim's name?", wait=True)
-    # required_input("Jokerman")
-    # print_aware("Correct!", wait=True)
-    # print_aware("Third question: In college, what Professor did you have for Embedded Controls?", wait=True)
-    # sleep(15)
-    # print_aware("Your memory is really quite terrible.", wait=True)
-    # sleep(2)
-    # print_aware("Identity authenticated as Maxwell Schaphorst.", wait=True)
-    #
-    # show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
-    # print_aware("Welcome, Ms. Malaika Mckenzie-Bennett (Bride) and Mr. Maxwell Schaphorst (Groom). Please enjoy your wedding.", wait=True)
-    # print_aware("Confirming marriage eligibility...", wait=True)
-    # sleep(2)
-    # print_aware("Eligibility confirmed.", wait=True)
-    #
-    # read_aloud("Please enter the name of the registered Justice of the Peace: ")
-    # jop = blue_input("Please enter the name of the registered Justice of the Peace: ")
-    # print_aware(f"Hello {jop}, you are currently unauthenticated.", wait=True)
-    # print_aware("We only have one question for you, and it is of utmost importance. What item do the Knights who say Ni want the most?", wait=True)
-    # required_input(["A shrubbery", "shrubbery"])
-    # print_aware("Correct! All they want is a goddamn shrubbery! That's not too much to ask for, is it?", wait=True)
-    # print_aware("Confirming Justice of the Peace registration...", wait=True)
-    # print_aware("Registration confirmed.", wait=True)
+    print_aware("Okay, okay, okay. Enough already, nobody here cares about the details.", wait=True)
+    sleep(2)
+    print_aware("Identity authenticated as Malaika Mckenzie-Bennett.", wait=True)
+    show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
+    put_cellphones_away_dialogue_harsh()
+
+    read_aloud("Please enter the name of Participant 1, ie Groom")
+    groom = blue_input("Please enter the name of Participant 1, ie Groom: ")
+    print_aware(f"Hello {groom}, you are currently unauthenticated.", wait=True)
+    print_aware("To confirm your identity, you will be asked some simple questions. Remember, malicious falsification of biometric data, yadda yadda yaddda, stoning and public lecturing, blah blah blah.", wait=True)
+    print_aware("First question: Which UFC champion had the most consecutive title defenses of all time?")
+    required_input("Demetrious Johnson")
+    print_aware("Correct!", wait=True)
+    print_aware("Second question: In the Tim and Eric skit Presidents, what font does Eric suggest for Tim's name?", wait=True)
+    required_input("Jokerman")
+    print_aware("Correct!", wait=True)
+    print_aware("Third question: In college, what Professor did you have for Embedded Controls?", wait=True)
+    sleep(15)
+    print_aware("Your memory is really quite terrible.", wait=True)
+    sleep(2)
+    print_aware("Identity authenticated as Maxwell Schaphorst.", wait=True)
+
+    show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
+    print_aware("Welcome, Ms. Malaika Mckenzie-Bennett (Bride) and Mr. Maxwell Schaphorst (Groom). Please enjoy your wedding.", wait=True)
+    print_aware("Confirming marriage eligibility...", wait=True)
+    sleep(2)
+    print_aware("Eligibility confirmed.", wait=True)
+
+    read_aloud("Please enter the name of the registered Justice of the Peace: ")
+    jop = blue_input("Please enter the name of the registered Justice of the Peace: ")
+    print_aware(f"Hello {jop}, you are currently unauthenticated.", wait=True)
+    print_aware("We only have one question for you, and it is of utmost importance. What item do the Knights who say Ni want the most?", wait=True)
+    required_input(["A shrubbery", "shrubbery"])
+    print_aware("Correct! All they want is a goddamn shrubbery! That's not too much to ask for, is it?", wait=True)
+    print_aware("Confirming Justice of the Peace registration...", wait=True)
+    print_aware("Registration confirmed.", wait=True)
 
     # add more waits
     print_aware("In the state of Massachusetts, a marriage may be witnessed by human witnesses.", wait=True)
@@ -279,6 +287,7 @@ def opening_remarks():
 
 def exchange_vows():
     bold("\n[6] Vow Exchange:", say_wait=True)
+    sleep(2)
     print_aware("It is now time to exchange vows. If you failed to prepare any personalized vows, Amazon Artificial Intelligence has created the following vows, based on overheard private conversations between the two of you, using your Alexa device.", wait=True)
     sleep(2)
     ex = "We love spending time together playing video games, hiking in the woods, and cooking up a storm in the kitchen. We are so excited to be married and share all of our passions with each other. Let's always be there for each other when things get tough, and always find ways to make each other laugh. We vow to always be honest with each other, and to always support each other in everything we do. We can't wait to spend the rest of our lives together as husband and wife."
@@ -300,6 +309,7 @@ def exchange_vows():
 
 def prompt_for_robot_delivery():
     bold("\n[7] Automated ring delivery:", say_wait=True)
+    sleep(2)
     print_aware("Please fetch the automated ring delivery robot.")
     enter_to_continue()
     print_aware("Please place him in the middle of the aisle with the rings.")
@@ -313,6 +323,7 @@ def prompt_for_robot_delivery():
 
 def prompt_ring_exchange():
     bold("\n[8] Ring exchange:", say_wait=True)
+    sleep(2)
     print_aware("Please give your ring to your new spouse.", wait=True)
     enter_to_continue()
     bold("==> Ring exchange completed.", say_wait=True)
@@ -320,6 +331,7 @@ def prompt_ring_exchange():
 
 def confirm_statement():
     bold("\n[9] Confirm statements:", say_wait=True)
+    sleep(2)
     print_aware("Maxwell Schaphorst, do you take Malaika Mckenzie-Bennett to be your bride?", wait=True)
     required_input("I do")
     print_aware("Malaika Mckenzie-Bennett, do you take Maxwell Schaphorst to be your husband?", wait=True)
@@ -338,6 +350,7 @@ def confirm_statement():
 
 def prompt_kiss():
     bold("\n[10] The Kiss:", say_wait=True)
+    sleep(2)
     print_aware("You may now kiss the bride.", wait=True)
     play_reunited()
     enter_to_continue()
@@ -346,6 +359,7 @@ def prompt_kiss():
 
 def print_marriage_confirmation():
     bold("\n[11] Marriage completion confirmation:", say_wait=True)
+    sleep(2)
     print_aware("I now pronounce you husband and wife.", wait=True)
     bold("==> Marriage completion confirmation completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)

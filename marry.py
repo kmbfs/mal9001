@@ -378,12 +378,15 @@ def full():
     if n <= 11:
         print_marriage_confirmation()
 
-kill_noise_processes()
-try:
-    full()
-except KeyboardInterrupt:
+
+def run_all():
+
     kill_noise_processes()
     try:
-        sys.exit(0)
-    except SystemExit:
-        os._exit(0)
+        full()
+    except KeyboardInterrupt:
+        kill_noise_processes()
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)

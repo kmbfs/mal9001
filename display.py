@@ -4,6 +4,20 @@ from time import sleep
 from utils import *
 from audio import read_aloud
 
+def terminal_size_columns():
+    try:
+        return os.get_terminal_size()
+    except Exception as e:
+        print("assuming 80 columns")
+        return 80
+
+def terminal_size_lines():
+    try:
+        return os.get_terminal_size()
+    except Exception as e:
+        print("assuming 180 lines")
+        return 180
+
 def blue_input(text):
     return input(colorize(39, text))
 
@@ -28,11 +42,11 @@ def colors_256(color_):
     return colorize(color_, color_)
 
 def matrix_fill(color_=47):
-    for _ in range(os.get_terminal_size().lines):
+    for _ in range(terminal_size_lines()):
         matrix_line(color_=color_)
 
 def matrix_line(color_=47):
-    chars = [pick_random(P_MATRIX_SHUFFLE) for _ in range(os.get_terminal_size().columns)]
+    chars = [pick_random(P_MATRIX_SHUFFLE) for _ in range(terminal_size_columns())]
     print(colorize(color_, "".join(chars)), end="\r")
 
 def matrix_shuffle(text, wait, color_=47):
@@ -55,7 +69,7 @@ def show_process(wait, iterations, proc_type, color=None):
            print(f"{proc_type[i%len(proc_type)]}", end="\r")
 
 def rightwards_completion(color_=None, wait=WAIT_ULTRAFAST):
-    cols = os.get_terminal_size().columns
+    cols = terminal_size_columns()
     for i in range(cols):
         l = [" " if _ > i else "=" for _ in range(cols)]
         l[i] = ">"
@@ -64,7 +78,7 @@ def rightwards_completion(color_=None, wait=WAIT_ULTRAFAST):
     print(colorize(color_, "".join(l)))
 
 def bounce(color_=None, wait=WAIT_ULTRAFAST, iterations=3):
-    cols = os.get_terminal_size().columns
+    cols = terminal_size_columns()
     for x in range(iterations):
         for i in range(cols*2):
             l = [" " for _ in range(cols)]
@@ -126,7 +140,7 @@ def initialize():
     print(' '.join([colors_256(x) for x in range(256)]))
 
 def demo():
-    print("terminal width", os.get_terminal_size().columns)
+    print("terminal width", terminal_size_columns())
     initialize()
     whisper("Shh. Beginning demo")
     slow_print("The demo is starting shortly", WAIT_SENTENCE)
@@ -161,7 +175,8 @@ def logo():
     tprint("MAL 9001","varsity")
 
 def print_logo():
-    cols = os.get_terminal_size().columns
+    cols = terminal_size_columns()
+
     print("~"*cols)
     print("~"*cols)
     print("\n")

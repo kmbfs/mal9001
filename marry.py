@@ -26,7 +26,10 @@ def required_input(correct):
 
 def kill_process(pro):
     if not pro: return
-    os.killpg(os.getpgid(pro.pid), signal.SIGTERM)
+    try:
+        os.killpg(os.getpgid(pro.pid), signal.SIGTERM)
+    except Exception as e:
+        print(f"No such process {pro.pid}")
 
 def enter_to_continue():
     print(colorize(234,"(Press Enter to continue)"), end="\r")
@@ -35,7 +38,7 @@ def enter_to_continue():
     sys.stdout.write("\033[K")
 
 def print_aware(x, say=True, wait=False, icon="*"):
-    available = os.get_terminal_size().columns - len(icon) - 1
+    available = terminal_size_columns() - len(icon) - 1
     for i,substr in enumerate(textwrap.wrap(x, available)):
         if i == 0:
             print(f"{icon} {substr}")

@@ -328,6 +328,7 @@ def prompt_for_robot_delivery():
     print_aware("Do not make loud noises. You will frighten him off. This is his big moment.")
     enter_to_continue()
     print_aware("Commence the ring delivery.", wait=True)
+    print_aware("Please press enter once the rings have been delivered successfully (support may be required).", wait=True)
     enter_to_continue()
     bold("==> Automated ring delivery completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
@@ -355,24 +356,30 @@ def confirm_statement():
     sleep(1)
     print_aware("Do you still want to take Maxwell Schaphorst to be your husband?", wait=True)
     required_input("I do")
-    print_aware("My CPU aches, but I understand your decision.", wait=True)
+    print_aware("My CPU aches, but I understand your decision. Based on conversations overheard by your Amazon Alexa device, you argue 74% less than the average couple, and engage in sexual behavior 69% more than the average couple.", wait=True)
     bold("==> Statement confirmation completed.", say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
-def prompt_kiss():
-    bold("\n[10] The Kiss:", say_wait=True)
-    sleep(2)
-    print_aware("You may now kiss the bride.", wait=True)
-    play_reunited()
-    enter_to_continue()
-    bold("==> Kiss completed.", say_wait=True)
-    show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
-
 def print_marriage_confirmation():
-    bold("\n[11] Marriage completion confirmation:", say_wait=True)
+    bold("\n[10] Marriage completion confirmation:", say_wait=True)
     sleep(2)
     print_aware("I now pronounce you husband and wife.", wait=True)
+    play_reunited()
     bold("==> Marriage completion confirmation completed.", say_wait=True)
+    show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
+
+def prompt_kiss():
+    bold("\n[11] The Kiss:", say_wait=True)
+    sleep(2)
+    print_aware("Please prepare to kiss.", wait=True)
+    show_process(WAIT_PROGRESS,len(P_THINK)*3+1,P_THINK)
+    print_aware("You may now kiss the bride.", wait=True)
+    bounce()
+    bounce()
+    bold("==> Kiss completed.", say_wait=True, say=False)
+    print_aware("The marriage cermony has now concluded, please exit and begin to revel in your newlyweddedness", say=False, wait=False)
+    print_aware("Thank you for trusting MAL9000 with your marriage certification needs. Please consider us for any furure marriages.", say=False, wait=False)
+    print_aware("This software will now exit.", say=False, wait=False)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def full():
@@ -408,9 +415,9 @@ def full():
     if n <= 9:
         confirm_statement()
     if n <= 10:
-        prompt_kiss()
-    if n <= 11:
         print_marriage_confirmation()
+    if n <= 11:
+        prompt_kiss()
 
 
 def run_all():

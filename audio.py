@@ -7,6 +7,8 @@ SILENT_SONGS = False
 
 def read_aloud(text, wait=False, no_numbers=True, voice=DEFAULT_VOICE, delay=0):
     # play with -r or --progress?
+    if voice is None:
+        voice = DEFAULT_VOICE
 
     if no_numbers:
         text = re.sub(r'\[[0123456789]+\]', '', text)

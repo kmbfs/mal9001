@@ -8,11 +8,11 @@ from audio import read_aloud
 def blue_input(text):
     return input(colorize(39, text))
 
-def bold(text, say=True, say_wait=False):
+def bold(text, say=True, say_wait=False, voice=None):
     print('\033[1m' + text + '\033[0m')
 
     if say:
-        read_aloud(text, wait=say_wait, no_numbers=True)
+        read_aloud(text, wait=say_wait, no_numbers=True, voice=voice)
 
 def italics(text):
     print('\x1B[4m' + text + '\x1B[4m')

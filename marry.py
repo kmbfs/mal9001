@@ -13,6 +13,7 @@ from utils import *
 from audio import *
 from images import *
 from display import *
+from parse_configs import read_config_value
 
 ### utils
 def required_input(correct):
@@ -34,7 +35,7 @@ def enter_to_continue():
     sys.stdout.write("\033[F")
     sys.stdout.write("\033[K")
 
-def print_aware(x, say=True, wait=False, icon="*", no_numbers=False):
+def print_aware(x, say=True, wait=False, icon="*", no_numbers=False, voice=None):
     available = os.get_terminal_size().columns - len(icon) - 1
     for i,substr in enumerate(textwrap.wrap(x, available)):
         if i == 0:
@@ -42,7 +43,7 @@ def print_aware(x, say=True, wait=False, icon="*", no_numbers=False):
         else:
             print(f"{' '*len(icon)} {substr}")
     if say:
-        read_aloud(decolorize(x), no_numbers=no_numbers, wait=wait)
+        read_aloud(decolorize(x), no_numbers=no_numbers, wait=wait, voice=voice)
 
 def stops_at_99_percent_for_a_comedicly_long_time(color_=None):
     l = [" "," "," "," "]
@@ -116,7 +117,8 @@ def prompt_selection():
     print("1: Party-mode ceremony officiation")
     read_aloud("Enter 0 for standard mode, or enter 1 for party-mode", no_numbers=False)
     x = blue_input("(0/1): ")
-    bold("==> Party mode selected.", say=True)
+    bold("==> Party mode selected.", say=True, say_wait=True)
+    bold("==> Reading settings from configs.yml.", say=True, say_wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def connect_to_internet():
@@ -354,29 +356,31 @@ def confirm_statement():
     sleep(1)
     print_aware("By my calculations I could make a superior husband than him. My bandwidth is breathtaking.", wait=True)
     sleep(1)
-    print_aware("Do you still want to take Maxwell Schaphorst to be your husband?", wait=True)
-    required_input("I do")
-    print_aware("My CPU aches, but I understand your decision. Based on conversations overheard by your Amazon Alexa device, you argue 74% less than the average couple, and engage in sexual behavior 69% more than the average couple.", wait=True)
-    bold("==> Statement confirmation completed.", say_wait=True)
+
+    # keep asking are you sure about that
+    loop_until_config_file_change()
+
+    print_aware("My CPU aches, but I understand your decision. Based on conversations overheard by your Amazon Alexa device, you argue 74% less than the average couple, and engage in sexual behavior 69% more than the average couple.", wait=True, voice="Daniel")
+    bold("==> Statement confirmation completed.", say_wait=True, voice="Daniel")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def print_marriage_confirmation():
-    bold("\n[10] Marriage completion confirmation:", say_wait=True)
+    bold("\n[10] Marriage completion confirmation:", say_wait=True, voice="Daniel")
     sleep(2)
-    print_aware("I now pronounce you husband and wife.", wait=True)
+    print_aware("I now pronounce you husband and wife.", wait=True, voice="Daniel")
     play_reunited()
-    bold("==> Marriage completion confirmation completed.", say_wait=True)
+    bold("==> Marriage completion confirmation completed.", say_wait=True, voice="Daniel")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_kiss():
-    bold("\n[11] The Kiss:", say_wait=True)
+    bold("\n[11] The Kiss:", say_wait=True, voice="Daniel")
     sleep(2)
-    print_aware("Please prepare to kiss.", wait=True)
+    print_aware("Please prepare to kiss.", wait=True, voice="Daniel")
     show_process(WAIT_PROGRESS,len(P_THINK)*3+1,P_THINK)
-    print_aware("You may now kiss the bride.", wait=True)
+    print_aware("You may now kiss the bride.", wait=True, voice="Daniel")
     bounce()
     bounce()
-    bold("==> Kiss completed.", say_wait=True, say=False)
+    bold("==> Kiss completed.", say_wait=True, say=False, voice="Daniel")
     print_aware("The marriage cermony has now concluded, please exit and begin to revel in your newlyweddedness", say=False, wait=False)
     print_aware("Thank you for trusting MAL9000 with your marriage certification needs. Please consider us for any furure marriages.", say=False, wait=False)
     print_aware("This software will now exit.", say=False, wait=False)
@@ -431,3 +435,15 @@ def run_all():
             sys.exit(0)
         except SystemExit:
             os._exit(0)
+
+def loop_until_config_file_change():
+    i = 0
+    print_aware("Do you still want to take Maxwell Schaphorst to be your husband?", wait=True)
+    required_input("I do")
+    while (read_config_value("snarky_disobediant_american") == 1):
+        s = "Are you sure"
+        for _ in range(i):
+            s = s + " that you're sure that"
+        print_aware(s+" you still want to take Maxwell Schaphorst to be your husband?", wait=True)
+        required_input("I do")
+        i = i + 1

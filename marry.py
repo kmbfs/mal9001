@@ -18,11 +18,12 @@ from parse_configs import read_config_value
 ### utils
 def required_input(correct):
     if type(correct) != str:
-        while blue_input("Input: ") not in correct:
+        correct = [c.lower() for c in correct]
+        while blue_input("Input: ").lower() not in correct:
             l = ", ".join([f"'{c}'" for c in correct])
             print(f"Invalid response, expecting one of: {l}")
     else:
-        while blue_input("Input: ") != correct:
+        while blue_input("Input: ").lower() != correct.lower():
             print(f"Invalid input, please enter '{correct}'")
 
 def kill_process(pro):

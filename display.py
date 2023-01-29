@@ -60,7 +60,7 @@ def show_process(wait, iterations, proc_type, color=None):
        else:
            print(f"{proc_type[i%len(proc_type)]}", end="\r")
 
-def rightwards_completion(color_=None, wait=WAIT_ULTRAFAST):
+def rightwards_completion(color_=None, wait=WAIT_FAST):
     cols = os.get_terminal_size().columns
     for i in range(cols):
         l = [" " if _ > i else "=" for _ in range(cols)]

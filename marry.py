@@ -17,6 +17,7 @@ from parse_configs import read_config_value
 
 ### utils
 def required_input(correct):
+    # make this type insensitive
     if type(correct) != str:
         correct = [c.lower() for c in correct]
         while blue_input("Input: ").lower() not in correct:
@@ -95,6 +96,7 @@ def stops_at_99_percent_for_a_comedicly_long_time(color_=None):
             print(colorize(color_, "100%                                      completed"))
 
 def put_cellphones_away_dialogue():
+    # make this dialogue bigger
     read_aloud("Detected active cell phones in the vicinity! Cell phones must be turned off and stowed for the duration of this ceremony for safety.")
     present_dialog("Detected active cell phone(s) in the vicinity! Cell phones must be turned off and stowed for the duration of this ceremony for safety.")
 
@@ -142,6 +144,7 @@ def connect_to_internet():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def download_updates():
+    # fix this to shift to next line
     bold("\n[2] Downloading (2) updates. Please wait. This may take a few minutes.", say_wait=True)
     sleep(2)
     print_aware("Downloading security update (1/2)")
@@ -210,7 +213,7 @@ def run_authentication():
     required_input("Amygdala")
     print_aware("Correct!", wait=True)
     print_aware("Final question: What is the sum of all natural numbers?", wait=True)
-    sleep(15)
+    sleep(20)
     print_aware("Okay, okay, okay. Enough already, nobody here cares about the details.", wait=True)
     sleep(2)
     print_aware("Identity authenticated as Malaika Mckenzie-Bennett.", wait=True)
@@ -228,7 +231,7 @@ def run_authentication():
     required_input("Jokerman")
     print_aware("Correct!", wait=True)
     print_aware("Third question: In college, what Professor did you have for Embedded Controls?", wait=True)
-    sleep(15)
+    sleep(20)
     print_aware("Your memory is really quite terrible.", wait=True)
     sleep(2)
     print_aware("Identity authenticated as Maxwell Schaphorst.", wait=True)
@@ -259,7 +262,7 @@ def run_authentication():
     sleep(1)
     print_aware("If they are not a human, please fax a complaint to Cinco Corporation addressed with 'Attn: Computers Pretending to be People Division' and we will respond within one business month.", wait=True)
     enter_to_continue()
-    print_aware("Great. I'm glad there are no computers disguised as people at this wedding. ")
+    print_aware("Great. I'm glad there are no computers disguised as people at this wedding. ", wait=True)
     sleep(1)
     print_aware("Next, please loudly vocalize the words displayed in this CAPTCHA image", wait=True)
     sleep(1)
@@ -337,6 +340,7 @@ def prompt_for_robot_delivery():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_ring_exchange():
+    # flush input somehow?
     bold("\n[8] Ring exchange:", say_wait=True)
     sleep(2)
     print_aware("Please give your ring to your new spouse.", wait=True)
@@ -438,6 +442,7 @@ def run_all():
             os._exit(0)
 
 def loop_until_config_file_change():
+    # also show a bunch of error messages
     i = 0
     print_aware("Do you still want to take Maxwell Schaphorst to be your husband?", wait=True)
     required_input("I do")

@@ -264,13 +264,13 @@ def run_authentication():
     enter_to_continue()
     print_aware("Great. I'm glad there are no computers disguised as people at this wedding. ", wait=True)
     sleep(1)
-    print_aware("Next, please loudly vocalize the words displayed in this CAPTCHA image", wait=True)
-    sleep(1)
+    # print_aware("Next, please loudly vocalize the words displayed in this CAPTCHA image", wait=True)
+    # sleep(1)
     # TODO add image display: just what do you think you're doing, dave?
     # daisy daisy///two
-    print_aware("Close enough, we do not have all day. I estimate 30 valid human audience members, which is sufficient to proceed.", wait=True)
-    sleep(2)
-    enter_to_continue()
+    # print_aware("Close enough, we do not have all day. I estimate 30 valid human audience members, which is sufficient to proceed.", wait=True)
+    # sleep(2)
+    # enter_to_continue()
     bold("==> Participant authentication completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 

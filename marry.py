@@ -242,16 +242,18 @@ def run_authentication():
     sleep(2)
     print_aware("Eligibility confirmed.", wait=True)
 
-    read_aloud("Please enter the name of the registered Justice of the Peace: ")
-    jop = blue_input("Please enter the name of the registered Justice of the Peace: ")
-    print_aware(f"Hello {jop}, you are currently unauthenticated.", wait=True)
-    print_aware("We only have one question for you, and it is of utmost importance. What item do the Knights who say Ni want the most?", wait=True)
-    required_input(["A shrubbery", "shrubbery"])
-    print_aware("Correct! All they want is a goddamn shrubbery! That's not too much to ask for, is it?", wait=True)
-    print_aware("Confirming Justice of the Peace registration...", wait=True)
-    print_aware("Registration confirmed.", wait=True)
+    print_aware("Participant 0 (Bride): do you intend to change your name following the marriage?", wait=True)
+    read_aloud("Please enter 'yes' or 'no': ")
+    yn = blue_input("Please enter 'yes' or 'no': ")
+    print_aware("Great, so I can update the marriage license documentation, please say your new desired name, including first, middle, and last names, please.", wait=True)
+    bounce()
+    print_aware("Thanks, I think you've said:", wait=True)
+    matrix_shuffle("TAARGUS, TAARGUS ", WAIT_WORD)#, say=True, say_wait=False)
+    read_aloud("taargus taargus")
+    show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
+    print_aware("Great, I've made the change to the marriage license documentation and your new legal name is TAARGUS, TAARGUS. As a reminder, please print out the docs.pdf file generated at the end of this program and immediately fax it to the town clerk.", wait=True)
+    show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
-    # add more waits
     print_aware("In the state of Massachusetts, a marriage may be witnessed by human witnesses.", wait=True)
     sleep(1)
     print_aware("In order to continue, an audience must be demonstrated.", wait=True)
@@ -264,13 +266,6 @@ def run_authentication():
     enter_to_continue()
     print_aware("Great. I'm glad there are no computers disguised as people at this wedding. ", wait=True)
     sleep(1)
-    # print_aware("Next, please loudly vocalize the words displayed in this CAPTCHA image", wait=True)
-    # sleep(1)
-    # TODO add image display: just what do you think you're doing, dave?
-    # daisy daisy///two
-    # print_aware("Close enough, we do not have all day. I estimate 30 valid human audience members, which is sufficient to proceed.", wait=True)
-    # sleep(2)
-    # enter_to_continue()
     bold("==> Participant authentication completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 

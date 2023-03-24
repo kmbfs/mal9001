@@ -251,7 +251,7 @@ def run_authentication():
     matrix_shuffle("TAARGUS, TAARGUS ", WAIT_WORD)#, say=True, say_wait=False)
     read_aloud("taargus taargus")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
-    print_aware("Great, I've made the change to the marriage license documentation and your new legal name is TAARGUS, TAARGUS. As a reminder, please print out the docs.pdf file generated at the end of this program and immediately fax it to the town clerk.", wait=True)
+    print_aware("Great, I've made the change to the marriage license documentation and your new legal name will be TAARGUS, TAARGUS. As a reminder, please print out the docs.pdf file generated at the end of this program and immediately fax it to the town clerk.", wait=True)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
     print_aware("In the state of Massachusetts, a marriage may be witnessed by human witnesses.", wait=True)

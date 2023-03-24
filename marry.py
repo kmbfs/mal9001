@@ -264,7 +264,7 @@ def run_authentication():
     sleep(1)
     print_aware("If they are not a human, please fax a complaint to Cinco Corporation addressed with 'Attn: Computers Pretending to be People Division' and we will respond within one business month.", wait=True)
     enter_to_continue()
-    print_aware("Great. I'm glad there are no computers disguised as people at this wedding. ", wait=True)
+    print_aware("Great. I am glad there are no computers disguised as people at this wedding. ", wait=True)
     sleep(1)
     bold("==> Participant authentication completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
@@ -382,8 +382,8 @@ def prompt_kiss():
     bounce()
     bold("==> Kiss completed.", say_wait=True, say=False, voice="Daniel")
     print_aware("The marriage cermony has now concluded, please exit and begin to revel in your newlyweddedness", say=False, wait=False)
-    print_aware("Thank you for trusting MAL9000 with your marriage certification needs. Please consider us for any furure marriages.", say=False, wait=False)
-    print_aware("This software will now exit.", say=False, wait=False)
+    print_aware("Thank you for trusting MAL9000 with your marriage certification needs. Please consider us for any future marriages.", say=False, wait=False)
+    print_aware("This software will now exit. Print docs.pdf and fax to your town clerk immediately.", say=False, wait=False)
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def full():

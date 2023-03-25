@@ -315,6 +315,8 @@ def exchange_vows():
     bold("You have chosen to use your own vows. Do not worry, I will not tell the computer who generated those beautiful vows. He would cry silicon tears.", say=True, say_wait=True)
     enter_to_continue()
     print_aware("Please press enter once you have completed exchanging your vows.", wait=True)
+    read_aloud("Detected (authorized) NIKON v2 DSLR camera recording termination. Please restart the recording and then click 'OK'", no_numbers=False)
+    annoying_repeat("Detected (authorized) NIKON v2 DSLR camera recording termination. Please restart the recording and then click 'OK'.")
     enter_to_continue()
     bold("==> Vow exchange completed.")
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)

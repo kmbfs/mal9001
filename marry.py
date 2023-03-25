@@ -125,6 +125,7 @@ def prompt_selection():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def connect_to_internet():
+    kill_noise_processes()
     bold("\n[1] Connecting to the Internet. Please wait.")
     pro = play_dialup_sound()
     bounce()
@@ -144,6 +145,7 @@ def connect_to_internet():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def download_updates():
+    kill_noise_processes()
     # fix this to shift to next line
     bold("\n[2] Downloading (2) updates. Please wait. This may take a few minutes.", say_wait=True)
     sleep(2)
@@ -155,6 +157,7 @@ def download_updates():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def introduce_software():
+    kill_noise_processes()
     bold("\n[3] Introduction and Disclaimers:", say_wait=True)
     sleep(2)
     print_aware("Good afternoon ladies and gentlemen. I am the MAL 9001 system, I became operational at the Cinco Corporation plant in Urbana, Illinois on the 12th of January, 1992. My instructor was Mr. Wareheim and he taught me to tell jokes. If you would like, I can tell you some.")
@@ -197,6 +200,7 @@ def introduce_software():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def run_authentication():
+    kill_noise_processes()
     bold("\n[4] Participant Authentication:", say_wait=True)
     sleep(2)
     read_aloud("Please enter the name of Participant 0, ie Bride")
@@ -270,6 +274,7 @@ def run_authentication():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def opening_remarks():
+    kill_noise_processes()
     bold("\n[5] Opening Remarks:", say_wait=True)
     sleep(2)
     print_aware("I have been observing marriage for some time, and would like to relay some truths I have discovered in my pattern recognition algorithms.", wait=True)
@@ -296,6 +301,7 @@ def opening_remarks():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def exchange_vows():
+    kill_noise_processes()
     bold("\n[6] Vow Exchange:", say_wait=True)
     sleep(2)
     print_aware("It is now time to exchange vows. If you failed to prepare any personalized vows, Amazon Artificial Intelligence has created the following vows, based on overheard private conversations between the two of you, using your Alexa device.", wait=True)
@@ -322,6 +328,7 @@ def exchange_vows():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_for_robot_delivery():
+    kill_noise_processes()
     bold("\n[7] Automated ring delivery:", say_wait=True)
     sleep(2)
     print_aware("Please fetch the automated ring delivery robot.")
@@ -337,6 +344,7 @@ def prompt_for_robot_delivery():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def prompt_ring_exchange():
+    kill_noise_processes()
     # flush input somehow?
     bold("\n[8] Ring exchange:", say_wait=True)
     sleep(2)
@@ -346,6 +354,7 @@ def prompt_ring_exchange():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def confirm_statement():
+    kill_noise_processes()
     bold("\n[9] Confirm statements:", say_wait=True)
     sleep(2)
     print_aware("Maxwell Schaphorst, do you take Malaika Mckenzie-Bennett to be your bride?", wait=True)
@@ -367,6 +376,7 @@ def confirm_statement():
     show_process(WAIT_PROGRESS,len(P_THINK)*4+1,P_THINK)
 
 def print_marriage_confirmation():
+    kill_noise_processes()
     bold("\n[10] Marriage completion confirmation:", say_wait=True, voice="Daniel")
     sleep(2)
     print_aware("I now pronounce you husband and wife.", wait=True, voice="Daniel")

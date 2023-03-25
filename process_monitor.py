@@ -22,4 +22,4 @@ def continuous_process_monitor(refresh_secs=1):
             grid, heightslist = audio_trace_init()
             clear_screen()
 
-continuous_process_monitor(refresh_secs=0.002)
+continuous_process_monitor(refresh_secs=0.01)
